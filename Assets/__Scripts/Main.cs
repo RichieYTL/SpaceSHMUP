@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour {
 
@@ -29,5 +30,13 @@ public class Main : MonoBehaviour {
 		pos.y = Utils.camBounds.max.y + enemySpawnPadding;
 		go.transform.position = pos;
 		Invoke ("SpawnEnemy", enemySpawnRate);
+	}
+
+	public void DelayedRestart(float delay){
+		Invoke ("Restart", delay);
+	}
+
+	public void Restart(){
+		SceneManager.LoadScene("_Scene_0");
 	}
 }
