@@ -17,6 +17,9 @@ public class Hero : MonoBehaviour {
 	public bool	_____________________;
 	public Bounds bounds;
 
+	public delegate void WeaponFireDelegate ();
+	public WeaponFireDelegate fireDelegate;
+
 	public GameObject lastTriggerGo = null;
 
 	void Awake(){
@@ -45,6 +48,10 @@ public class Hero : MonoBehaviour {
 		
 		// rotate the ship to make it feel more dynamic
 		transform.rotation =Quaternion.Euler(yAxis*pitchMult, xAxis*rollMult,0);
+
+		if(Input.GetAxis("Jump") == 1 && fireDelegate != null){
+			fireDelegate ();
+		}
 	}
 
 	void OnTriggerEnter(Collider other){
