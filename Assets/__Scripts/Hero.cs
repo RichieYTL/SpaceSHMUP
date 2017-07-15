@@ -72,10 +72,10 @@ public class Hero : MonoBehaviour {
 			} else if (go.tag == "PowerUp") {
 				AbsorbPowerUp (go);
 			} else {
-				print ("Triggered: " + go.name);
+				print ("3. Triggered: " + go.name);
 			}
 		} else {
-			print ("Triggered: " + other.gameObject.name);
+			print ("4. Triggered: " + other.gameObject.name);
 		}
 	}
 
