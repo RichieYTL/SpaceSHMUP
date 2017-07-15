@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUP : MonoBehaviour {
+public class PowerUp : MonoBehaviour {
 
 	public Vector2 rotMinMax = new Vector2(15,90);
 	public Vector2 driftMinMax = new Vector2(.25f, 2);
@@ -31,7 +31,7 @@ public class PowerUP : MonoBehaviour {
 			Random.Range (rotMinMax.x, rotMinMax.y),
 			Random.Range (rotMinMax.x, rotMinMax.y));
 
-		InvokeRepeating ("CheckOffScreen", 2f, 2f);
+		InvokeRepeating ("CheckOffscreen", 2f, 2f);
 
 		birthTime = Time.time;
 	}
@@ -60,7 +60,8 @@ public class PowerUP : MonoBehaviour {
 
 	public void SetType(WeaponType wt){
 		WeaponDefinition def = Main.GetWeaponDefinition (wt);
-		cube.GetComponent<Renderer> ().material.color = def.color;
+		Renderer cubeRend = cube.GetComponent<Renderer> ();
+		cubeRend.material.color = def.color;
 		letter.text = def.letter;
 		type = wt;
 	}

@@ -35,9 +35,12 @@ public class Weapon : MonoBehaviour {
 	public GameObject collar;
 	public float lastShot;
 
+	void Awake(){
+		collar = transform.Find ("Collar").gameObject;
+	}
+
 	// Use this for initialization
 	void Start () {
-		collar = transform.Find ("Collar").gameObject;
 		SetType (_type);
 
 		if (PROJECTILE_ANCHOR == null) {
@@ -70,10 +73,12 @@ public class Weapon : MonoBehaviour {
 	}
 
 	public void Fire(){
-		if (!gameObject.activeInHierarchy)
+		if (!gameObject.activeInHierarchy) {
 			return;
-		if(Time.time - lastShot<def.delayBetweenShots)
+		}
+		if (Time.time - lastShot < def.delayBetweenShots) {
 			return;
+		}
 		Projectile p;
 		switch(type){
 		case WeaponType.blaster:

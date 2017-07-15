@@ -7,6 +7,11 @@ public class Main : MonoBehaviour {
 
 	static public Main S;
     static public Dictionary<WeaponType, WeaponDefinition> W_DEFS;
+	public GameObject prefabPowerUp;
+	public WeaponType[] powerUpFrequency = new WeaponType[] {
+		WeaponType.blaster, WeaponType.blaster,
+		WeaponType.spread, WeaponType.shield
+	};
 
 	public GameObject[] prefabEnemies;
 	public float enemySpawnPerSecond = .5f;
@@ -15,6 +20,19 @@ public class Main : MonoBehaviour {
 
 	public float enemySpawnRate;
     public WeaponType[] activeWeaponTypes;
+
+	public void ShipDestroyed(Enemy e){
+		if(Random.value<=e.powerUpDropChance){
+			int ndx = Random.Range(0,powerUpFrequency.Length);
+			WeaponType puType = powerUpFrequency [ndx];
+
+			GameObject go = Instantiate(prefabPowerUp) as GameObject;
+			PowerUp pu = go.GetComponent<PowerUp> ();
+			pu.SetType (puType);
+
+			pu.transform.position = e.transform.position;
+		}
+	}
 
 	void Awake(){
 		S = this;
