@@ -70,8 +70,8 @@ public class Enemy_4 : Enemy {
 		case "ProjectileHero":
 			Projectile p = other.GetComponent<Projectile> ();
 			bounds.center = transform.position + boundsCenterOffset;
-			if (bounds.extents == Vector3.zero || Utils.ScreenBoundsCheck (bounds,
-				    BoundsTest.offScreen) != Vector3.zero) {
+			if (bounds.extents == Vector3.zero || Utils.ScreenBoundsCheck (bounds, 
+					BoundsTest.offScreen) != Vector3.zero) {
 				Destroy (other);
 				break;
 			}
