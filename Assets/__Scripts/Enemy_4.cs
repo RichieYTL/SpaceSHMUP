@@ -64,6 +64,7 @@ public class Enemy_4 : Enemy {
 	}
 
 	void OnCollisionEnter ( Collision coll){
+		print ("Hit 4");
 		GameObject other = coll.gameObject;
 		switch(other.tag){
 		case "ProjectileHero":
